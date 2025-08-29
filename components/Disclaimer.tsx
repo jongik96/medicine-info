@@ -3,7 +3,10 @@
 import { useLanguage } from '../contexts/LanguageContext'
 
 export default function Disclaimer() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
+  const emergencyServices = language === 'ja' 
+    ? ['救急車: 119', '救急相談センター: #7119', '厚生労働省 医薬・生活衛生局']
+    : ['Ambulance: 119', 'Emergency Consultation Center: #7119', 'Ministry of Health, Labour and Welfare Pharmaceutical and Medical Safety Bureau']
 
   return (
     <div className="mt-12 bg-red-50 border border-red-200 rounded-lg p-6">
@@ -32,7 +35,7 @@ export default function Disclaimer() {
           <div className="mt-4 p-3 bg-white rounded border border-red-200">
             <h4 className="text-sm font-medium text-red-800 mb-2">{t('disclaimer.emergency')}</h4>
             <ul className="text-xs text-red-700 space-y-1">
-              {t('disclaimer.emergencyServices').map((service, idx) => (
+              {emergencyServices.map((service, idx) => (
                 <li key={idx}>• {service}</li>
               ))}
             </ul>
