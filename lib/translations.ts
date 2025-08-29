@@ -4,7 +4,6 @@ export const translations = {
     header: {
       title: '医薬品情報',
       home: 'ホーム',
-      categories: 'カテゴリー',
       contact: 'お問い合わせ',
       languageSwitch: 'English'
     },
@@ -63,7 +62,6 @@ export const translations = {
     header: {
       title: 'Medicine Information',
       home: 'Home',
-      categories: 'Categories',
       contact: 'Contact',
       languageSwitch: '日本語'
     },
