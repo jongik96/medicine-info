@@ -1,3 +1,7 @@
+'use client'
+
+import { useLanguage } from '../contexts/LanguageContext'
+
 interface MedicineResultsProps {
   results: {
     categories: Array<{
@@ -7,6 +11,7 @@ interface MedicineResultsProps {
       examples: string[]
       warnings: string[]
       sources: string[]
+      officialApproval?: string
     }>
     generalAdvice: string
     disclaimer: string
@@ -14,6 +19,7 @@ interface MedicineResultsProps {
 }
 
 export default function MedicineResults({ results }: MedicineResultsProps) {
+  const { t } = useLanguage()
   const sortedCategories = [...results.categories].sort((a, b) => b.popularity - a.popularity)
 
   return (
@@ -41,7 +47,7 @@ export default function MedicineResults({ results }: MedicineResultsProps) {
                 {category.name}
               </h3>
               <div className="flex items-center space-x-1">
-                <span className="text-sm text-gray-500">人気度:</span>
+                <span className="text-sm text-gray-500">{t('results.popularity')}</span>
                 <div className="flex space-x-1">
                   {[...Array(5)].map((_, i) => (
                     <svg
@@ -60,9 +66,23 @@ export default function MedicineResults({ results }: MedicineResultsProps) {
 
             <p className="text-gray-600 mb-4">{category.description}</p>
 
+            {/* 공식 승인 표시 */}
+            {category.officialApproval && (
+              <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg">
+                <div className="flex items-center">
+                  <svg className="h-4 w-4 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-sm text-green-700 font-medium">
+                    {t('results.officialApproval')}
+                  </span>
+                </div>
+              </div>
+            )}
+
             {category.examples.length > 0 && (
               <div className="mb-4">
-                <h4 className="text-sm font-medium text-gray-700 mb-2">例:</h4>
+                <h4 className="text-sm font-medium text-gray-700 mb-2">{t('results.examples')}</h4>
                 <div className="flex flex-wrap gap-2">
                   {category.examples.map((example, idx) => (
                     <span
@@ -78,7 +98,7 @@ export default function MedicineResults({ results }: MedicineResultsProps) {
 
             {category.warnings.length > 0 && (
               <div className="mb-4">
-                <h4 className="text-sm font-medium text-red-700 mb-2">注意事項:</h4>
+                <h4 className="text-sm font-medium text-red-700 mb-2">{t('results.warnings')}</h4>
                 <ul className="space-y-1">
                   {category.warnings.map((warning, idx) => (
                     <li key={idx} className="text-sm text-red-600 flex items-start">
@@ -92,7 +112,7 @@ export default function MedicineResults({ results }: MedicineResultsProps) {
 
             {category.sources.length > 0 && (
               <div>
-                <h4 className="text-sm font-medium text-gray-700 mb-2">情報源:</h4>
+                <h4 className="text-sm font-medium text-gray-700 mb-2">{t('results.sources')}</h4>
                 <div className="space-y-1">
                   {category.sources.map((source, idx) => (
                     <p key={idx} className="text-xs text-gray-500">
