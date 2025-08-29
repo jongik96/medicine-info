@@ -39,7 +39,10 @@ export const translations = {
       examples: '例:',
       warnings: '注意事項:',
       sources: '情報源:',
-      officialApproval: '厚生労働省・日本OTC医薬品協会公式承認'
+      officialApproval: '厚生労働省・日本OTC医薬品協会公式承認',
+      availability: '購入方法:',
+      prescription: '処方箋:',
+      storeType: '販売場所:'
     },
     
     // 면책 고지
@@ -97,7 +100,10 @@ export const translations = {
       examples: 'Examples:',
       warnings: 'Warnings:',
       sources: 'Sources:',
-      officialApproval: 'Officially Approved by Ministry of Health, Labour and Welfare & Japan OTC Medicine Association'
+      officialApproval: 'Officially Approved by Ministry of Health, Labour and Welfare & Japan OTC Medicine Association',
+      availability: 'Purchase Method:',
+      prescription: 'Prescription:',
+      storeType: 'Where to Buy:'
     },
     
     // Disclaimer

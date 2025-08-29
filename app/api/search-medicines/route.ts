@@ -33,7 +33,11 @@ export async function POST(request: NextRequest) {
       "examples": ["公式承認済みの例1", "公式承認済みの例2"],
       "warnings": ["注意事項1", "注意事項2"],
       "sources": ["厚生労働省", "日本OTC医薬品協会"],
-      "officialApproval": "厚生労働省・日本OTC医薬品協会公式承認済み"
+      "officialApproval": "厚生労働省・日本OTC医薬品協会公式承認済み",
+      "availability": "ドラッグストアで購入可能",
+      "prescription": "処方箋不要",
+      "storeType": "ドラッグストア・薬局",
+      "imageUrl": "https://example.com/medicine-image.jpg"
     }
   ],
   "generalAdvice": "症状に応じた公式承認済み医薬品カテゴリーをご案内します。",
